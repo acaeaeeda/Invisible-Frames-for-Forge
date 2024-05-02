@@ -27,3 +27,6 @@ run-data
 forge*changelog.txt
 *.txt
 *.zip
+
+test
+.gitattributes
