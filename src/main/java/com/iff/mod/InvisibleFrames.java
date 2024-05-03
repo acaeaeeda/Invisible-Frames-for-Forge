@@ -25,11 +25,15 @@ public class InvisibleFrames {
         @SubscribeEvent
         public static void onFrameInteract(EntityInteract event){
             if (event == null || event.getTarget() == null){return;}
-            //LOGGER.info(event.getTarget().getType().toString());
             if (event.getTarget().getType().toString().equalsIgnoreCase("entity.minecraft.item_frame") || event.getTarget().getType().toString().equalsIgnoreCase("entity.minecraft.glow_item_frame"))
             {
-                event.getTarget().setInvisible(true);
-                
+                    if (event.getEntity().isShiftKeyDown()){
+                        event.getTarget().setInvisible(false);
+                        event.setCanceled(true);
+
+                    }else{
+                        event.getTarget().setInvisible(true);
+                }
             }
         }
     }
